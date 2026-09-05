@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPAMSHIELD | AI SMS Security</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <nav>
+        <div class="nav-brand">SPAMSHIELD</div>
+        <div class="nav-links">
+            <a href="#scanner">Scanner</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#performance">Performance</a>
+        </div>
+        <div class="nav-status"><span class="pulse-dot"></span> SVM ENGINE ONLINE</div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="badge">AI SECURITY ENGINE • ONLINE</div>
+            <h1>Detect the Threat<br>Before You Open It.</h1>
+            <p>Analyze suspicious SMS messages using TF-IDF text representation and a Linear Support Vector Machine.</p>
+            <div class="hero-buttons">
+                <a href="#scanner" class="btn primary">SCAN A MESSAGE</a>
+                <a href="#how-it-works" class="btn secondary">HOW IT WORKS</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="radar-container">
+                <div class="radar"></div>
+                <div class="shield-icon"></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="scanner" class="scanner-section">
+        <h2>SMS THREAT SCANNER</h2>
+        
+        <div class="scanner-box glass-panel">
+            <div class="examples">
+                <span>Examples:</span>
+                <button class="ex-btn">"Congratulations! You have won a free prize. Click now to claim."</button>
+                <button class="ex-btn">"Hey, are we still meeting at 6 PM today?"</button>
+                <button class="ex-btn">"URGENT! Your account has been selected for a reward. Claim now."</button>
+            </div>
+            
+            <textarea id="messageInput" placeholder="Paste or type an SMS message here..."></textarea>
+            
+            <div class="scanner-controls">
+                <span class="char-count">0 characters</span>
+                <div class="action-btns">
+                    <button id="clearBtn" class="btn secondary small">Clear</button>
+                    <button id="scanBtn" class="btn primary">SCAN MESSAGE</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="scanOverlay" class="scan-overlay hidden">
+            <div class="scan-line"></div>
+            <p id="scanStatus" class="scan-status-text">ANALYZING MESSAGE...</p>
+        </div>
+
+        <div id="resultSection" class="result-section hidden">
+            <div id="verdictCard" class="glass-panel verdict-card">
+                <!-- Injected via JS -->
+            </div>
+            
+            <div class="intelligence-grid">
+                <div class="glass-panel stat-card">
+                    <h3>MESSAGE INTELLIGENCE</h3>
+                    <ul id="heuristicsList"></ul>
+                </div>
+                <div class="glass-panel stat-card">
+                    <h3>SVM DECISION SCORE</h3>
+                    <div id="svmScore" class="score-display"></div>
+                    <p class="score-subtext">Positive &rarr; Spam side<br>Negative &rarr; Not Spam side</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="pipeline-section">
+        <h2>HOW IT WORKS</h2>
+        <div class="pipeline-grid">
+            <div class="glass-panel step-card">
+                <span class="step-num">01</span>
+                <h3>MESSAGE INPUT</h3>
+                <p>Raw SMS text is received.</p>
+            </div>
+            <div class="glass-panel step-card">
+                <span class="step-num">02</span>
+                <h3>TF-IDF</h3>
+                <p>Convert text into 7792 numerical features using term frequency-inverse document frequency.</p>
+            </div>
+            <div class="glass-panel step-card">
+                <span class="step-num">03</span>
+                <h3>LINEAR SVM</h3>
+                <p>Classify the vector using the pre-trained Support Vector Machine hyper-plane.</p>
+            </div>
+            <div class="glass-panel step-card">
+                <span class="step-num">04</span>
+                <h3>RESULT</h3>
+                <p>Output final verdict: SPAM or NOT SPAM.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="performance" class="performance-section">
+        <h2>MODEL EVALUATION RESULTS</h2>
+        <p class="perf-note">Metrics obtained from the held-out test dataset (1034 samples).</p>
+        
+        <div class="metrics-grid">
+            <div class="glass-panel metric-card">
+                <h4>Overall Accuracy</h4>
+                <div class="metric-val highlight">98%</div>
+            </div>
+            <div class="glass-panel metric-card">
+                <h4>SPAM Metrics</h4>
+                <p>Precision: 0.97</p>
+                <p>Recall: 0.87</p>
+                <p>F1 Score: 0.92</p>
+                <p>Support: 131</p>
+            </div>
+            <div class="glass-panel metric-card">
+                <h4>NOT SPAM (Ham)</h4>
+                <p>Precision: 0.98</p>
+                <p>Recall: 1.00</p>
+                <p>F1 Score: 0.99</p>
+                <p>Support: 903</p>
+            </div>
+            <div class="glass-panel metric-card">
+                <h4>Model Specs</h4>
+                <p>Macro Avg F1: 0.95</p>
+                <p>Weighted Avg F1: 0.98</p>
+                <p>TF-IDF Vocab: 7792</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>SPAMSHIELD • Uses NLP & LinearSVC to classify SMS. Pre-trained model active.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
