@@ -173,11 +173,33 @@ footer { text-align: center; padding: 3rem; border-top: 1px solid var(--glass-bo
 @keyframes pulseText { 0% { opacity: 0.7; } 50% { opacity: 1; text-shadow: 0 0 15px var(--cyan); } 100% { opacity: 0.7; } }
 
 @media (max-width: 768px) {
-    .hero { flex-direction: column; text-align: center; gap: 4rem; padding-top: 4rem;}
+    .hero { flex-direction: column; text-align: center; gap: 3rem; padding: 4rem 5% 3rem;}
     .hero-content { max-width: 100%; }
-    .radar-container { width: 280px; height: 280px; margin: 0 auto;}
+    .radar-container { width: 250px; height: 250px; margin: 0 auto;}
     .intelligence-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
-    .hero h1 { font-size: 3.2rem; }
+    .hero h1 { font-size: 2.8rem; }
     .v-details { flex-direction: column; gap: 10px; align-items: center; }
+    
+    .scanner-section, .pipeline-section, .performance-section { padding: 3rem 5%; }
+    .scanner-section h2, .pipeline-section h2, .performance-section h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+    
+    .btn.secondary { margin-left: 0; margin-top: 1rem; display: block; width: fit-content; margin-left: auto; margin-right: auto;}
+    .hero-buttons { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    
+    .scanner-box { padding: 1.5rem; }
+    .scanner-controls { flex-direction: column; gap: 1.5rem; }
+    .action-btns { display: flex; width: 100%; justify-content: space-between; gap: 10px; }
+    #scanBtn { flex-grow: 1; }
+    
+    .scan-overlay { padding: 2rem; }
+    .scan-status-text { font-size: 1.2rem; }
+    
+    .verdict-card { padding: 2rem 1rem; }
+    .v-icon { font-size: 3rem; }
+    .v-title { font-size: 2rem; }
+    .score-display { font-size: 2.5rem; }
+    .stat-card { padding: 1.5rem; }
+    
+    .metrics-grid { gap: 1rem; }
 }
