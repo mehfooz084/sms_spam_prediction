@@ -5,9 +5,9 @@ import joblib
 
 app = Flask(__name__)
 
-# Load models carefully without retraining
-MODEL_PATH = "svm_model.pkl"
-VECT_PATH = "tfidf_vectorizer.pkl"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "svm_model.pkl")
+VECT_PATH = os.path.join(BASE_DIR, "tfidf_vectorizer.pkl")
 
 svm_model = None
 tfidf_vectorizer = None
@@ -66,8 +66,8 @@ def predict():
             "message_stats": stats
         })
 
-    except Exception:
-        return jsonify({"success": False, "error": "An error occurred during prediction."})
+    except Exception as e:
+        return jsonify({"success": False, "error": f"An error occurred during prediction: {str(e)}"})
 
 if __name__ == '__main__':
     app.run(debug=True)
